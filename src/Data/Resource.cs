@@ -1,4 +1,3 @@
-#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace MoneyBurned.Dotnet.Lib.Data;
 
 public class Resource(string name, Cost cost)
