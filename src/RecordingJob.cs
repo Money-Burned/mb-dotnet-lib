@@ -1,4 +1,5 @@
-﻿using MoneyBurned.Dotnet.Lib.Data;
+﻿using System.Collections.ObjectModel;
+using MoneyBurned.Dotnet.Lib.Data;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace MoneyBurned.Dotnet.Lib
@@ -6,13 +7,33 @@ namespace MoneyBurned.Dotnet.Lib
     public class RecordingJob
     {
         private readonly List<Resource> resources = [];
+        public ReadOnlyCollection<Resource> Resources { get { return new ReadOnlyCollection<Resource>(resources); }}
+        public string Name { get; set; } = "New Job";
+        public Guid Id { get; } = Guid.NewGuid();
         public TimeSpan ElapsedTime { get { return CalculateElapsedTime(); } }
         public Decimal ElapsedCost { get { return CalculateCosts(); } }
         public DateTime StartTime { get; private set; } = DateTime.MinValue;
         public DateTime EndTime { get; private set; } = DateTime.MaxValue;
 
+
+        public RecordingJob()
+        {
+
+        }
+
+        public RecordingJob(string name)
+        {
+            this.Name = name;
+        }
+        
         public RecordingJob(Resource[] resources)
         {
+            this.resources.AddRange(resources);
+        }
+
+        public RecordingJob(string name, Resource[] resources)
+        {
+            this.Name = name;
             this.resources.AddRange(resources);
         }
 
@@ -24,6 +45,21 @@ namespace MoneyBurned.Dotnet.Lib
         public void EndRecording()
         {
             EndTime = DateTime.Now;
+        }
+
+        public void AddResource(Resource resource)
+        {
+            this.resources.Add(resource);
+        }
+
+        public void AddResources(Resource[] resources)
+        {
+            this.resources.AddRange(resources);
+        }
+
+        public void RemoveResource(Resource resource)
+        {
+            this.resources.Remove(resource);
         }
 
         private Decimal CalculateCosts()
