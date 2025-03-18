@@ -2,7 +2,7 @@
 
 This repository is one of several reference implementations of the "Money Burned" application to illustrate the use of a specific development technology/platform. To learn more about it, check out the [organization profile](https://github.com/Money-Burned).  
 
-This is just a [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet) based software component that contains general business logic and can be used by other applications that use the same software development framework. It is a dependency for the following projects:  
+This is just a [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet) (pronounced "Dotnet") based software component that contains general business logic and can be used by other applications that use the same software development framework. It is a dependency for the following projects:  
 
 - [mb-dotnet-console](https://github.com/Money-Burned/mb-dotnet-console)
 
@@ -10,7 +10,7 @@ This is just a [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-do
 
 - Application type: **Library**
 - Available for: **Cross-Platform** (Windows/Linux/Mac)
-- Framework/Technology used: **[.NET 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)** (pronounced "Dotnet")
+- Framework/Technology used: **[.NET 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)**
 - Programming Language used: **C#**
 - User interaction: none
 
@@ -36,6 +36,7 @@ cd ~\Money-Burned
 git clone https://github.com/Money-Burned/mb-dotnet-lib.git
 cd ~\Money-Burned\mb-dotnet-lib\src
 dotnet build
+ls
 ```
 
 ### How to run
