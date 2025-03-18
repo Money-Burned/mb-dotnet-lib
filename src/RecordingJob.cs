@@ -4,7 +4,7 @@ using MoneyBurned.Dotnet.Lib.Data;
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace MoneyBurned.Dotnet.Lib
 {
-    public class RecordingJob
+    public class Job
     {
         private readonly List<Resource> resources = [];
         public ReadOnlyCollection<Resource> Resources { get { return new ReadOnlyCollection<Resource>(resources); }}
@@ -16,22 +16,22 @@ namespace MoneyBurned.Dotnet.Lib
         public DateTime EndTime { get; private set; } = DateTime.MaxValue;
 
 
-        public RecordingJob()
+        public Job()
         {
 
         }
 
-        public RecordingJob(string name)
+        public Job(string name)
         {
             this.Name = name;
         }
         
-        public RecordingJob(Resource[] resources)
+        public Job(Resource[] resources)
         {
             this.resources.AddRange(resources);
         }
 
-        public RecordingJob(string name, Resource[] resources)
+        public Job(string name, Resource[] resources)
         {
             this.Name = name;
             this.resources.AddRange(resources);
