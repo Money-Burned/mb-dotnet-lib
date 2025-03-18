@@ -36,6 +36,7 @@ cd ~\Money-Burned
 git clone https://github.com/Money-Burned/mb-dotnet-lib.git
 cd ~\Money-Burned\mb-dotnet-lib\src
 dotnet build
+ls
 ```
 
 ### How to run
