@@ -7,7 +7,9 @@ namespace MoneyBurned.Dotnet.Lib
     public class Job
     {
         private readonly List<Resource> resources = [];
-        public ReadOnlyCollection<Resource> Resources { get { return new ReadOnlyCollection<Resource>(resources); }}
+        public ReadOnlyCollection<Resource> Resources { get { return new ReadOnlyCollection<Resource>(resources); } }
+        public int ResourcesTotalCount { get { return GetResourcesTotalCount(); } }
+
         public string Name { get; set; } = "New Job";
         public Guid Id { get; } = Guid.NewGuid();
         public TimeSpan ElapsedTime { get { return CalculateElapsedTime(); } }
@@ -62,6 +64,21 @@ namespace MoneyBurned.Dotnet.Lib
             this.resources.Remove(resource);
         }
 
+        public void ClearResources()
+        {
+            this.resources.Clear();
+        }
+
+        private int GetResourcesTotalCount()
+        {
+            int resourcesTotalCount = 0; ;
+            foreach (Resource resource in this.resources)
+            {
+                resourcesTotalCount += resource.Amount;
+            }
+            return resourcesTotalCount;
+        }
+
         private Decimal CalculateCosts()
         {
             Decimal costs = 0;
@@ -88,11 +105,11 @@ namespace MoneyBurned.Dotnet.Lib
             if (StartTime != DateTime.MinValue)
             {
                 string status = EndTime != DateTime.MaxValue ? "ended" : "running";
-                return string.Format("Job {3} with {0} resource(s) took {1:c} and a total cost of {2:C2}.", resources.Count, ElapsedTime, CalculateCosts(), status);
+                return string.Format($"Job {status} with {ResourcesTotalCount} resource(s) took {ElapsedTime:hh\\:mm\\:ss\\.ff} and a total cost of {CalculateCosts():C2}.");
             }
             else
             {
-                return string.Format("Job with {0} resource(s) wasn't started yet.", resources.Count);
+                return string.Format($"Job with {ResourcesTotalCount} resource(s) wasn't started yet.");
             }
         }
     }
