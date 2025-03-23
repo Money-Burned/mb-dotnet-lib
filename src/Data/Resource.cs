@@ -14,16 +14,22 @@ public class Resource
     {
         Name = name;
         CostPerWorkHour = cost.ValuePerHour;
-        IsGenericRole = isGeneric;
-        Category = category;
+        IsGenericRole = (category == ResourceCategory.GroupOfAssets || category == ResourceCategory.GroupOfPersons) || isGeneric;
+        Category = category;        
     }
 
     public Resource(string name, Cost cost, int amount, ResourceCategory category = ResourceCategory.GroupOfPersons)
     {
+        if (!(category == ResourceCategory.GroupOfAssets || category == ResourceCategory.GroupOfPersons))
+        {
+            throw new ArgumentException("Please use the common constructor for non-generic resources!");
+        }
+
         Name = name;
         CostPerWorkHour = cost.ValuePerHour;
         IsGenericRole = true;
         Amount = amount;
+        Category = category;
     }
 
     private decimal GetTotalCost()
