@@ -32,6 +32,13 @@ public class Resource
         Category = category;
     }
 
+    private void UpdateCoreData(string name, Cost cost, bool isGeneric)
+    {
+        Name = name;
+        CostPerWorkHour = cost.ValuePerHour;
+        IsGenericRole = isGeneric;
+    }
+
     private decimal GetTotalCost()
     {
         return costPerWorkHour * Amount;
