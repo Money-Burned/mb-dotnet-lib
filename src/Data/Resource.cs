@@ -1,13 +1,52 @@
 namespace MoneyBurned.Dotnet.Lib.Data;
 
-public class Resource(string name, Cost cost)
+public class Resource
 {
-    public string Name { get; private set; } = name;
-    public decimal CostPerWorkHour { get; private set; } = cost.ValuePerHour;
+    public Guid Id { get; } = Guid.NewGuid();
+    public string Name { get; private set; }
+    private decimal costPerWorkHour = 0M;
+    public decimal CostPerWorkHour { get { return GetTotalCost(); } private set { costPerWorkHour = value; } }
+    public bool IsGenericRole { get; private set; } = false;
+    public int Amount { get; set; } = 1;
+    public ResourceCategory Category { get; set; }
+
+    public Resource(string name, Cost cost, bool isGeneric = false, ResourceCategory category = default)
+    {
+        Name = name;
+        CostPerWorkHour = cost.ValuePerHour;
+        IsGenericRole = (category == ResourceCategory.GroupOfAssets || category == ResourceCategory.GroupOfPersons) || isGeneric;
+        Category = category;        
+    }
+
+    public Resource(string name, Cost cost, int amount, ResourceCategory category = ResourceCategory.GroupOfPersons)
+    {
+        if (!(category == ResourceCategory.GroupOfAssets || category == ResourceCategory.GroupOfPersons))
+        {
+            throw new ArgumentException("Please use the common constructor for non-generic resources!");
+        }
+
+        Name = name;
+        CostPerWorkHour = cost.ValuePerHour;
+        IsGenericRole = true;
+        Amount = amount;
+        Category = category;
+    }
+
+    public void UpdateCoreData(string name, Cost cost, bool isGeneric)
+    {
+        Name = name;
+        CostPerWorkHour = cost.ValuePerHour;
+        IsGenericRole = isGeneric;
+    }
+
+    private decimal GetTotalCost()
+    {
+        return costPerWorkHour * Amount;
+    }
 
     public override string ToString()
     {
-        return string.Format("Resource {0} at {1:C2}/h", Name, CostPerWorkHour);
+        return string.Format($"{(IsGenericRole ? $"{Amount}x " : String.Empty)}Resource Name at {CostPerWorkHour:C2}/h");
     }
 
 }
