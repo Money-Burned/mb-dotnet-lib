@@ -1,5 +1,3 @@
-using System;
-
 namespace MoneyBurned.Dotnet.Lib.Data;
 
 public class Cost
@@ -136,18 +134,4 @@ public class Cost
             _ => cost,
         };
     }
-}
-
-public enum CostIntervalType
-{
-    Minute,
-    Hour,
-    Day,
-    WorkDay,
-    Week,
-    WorkWeek,
-    Month,
-    WorkMonth,
-    Year,
-    WorkYear
 }
