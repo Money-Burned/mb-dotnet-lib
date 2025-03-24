@@ -2,13 +2,19 @@ namespace MoneyBurned.Dotnet.Lib.Data;
 
 public class Resource
 {
-    public Guid Id { get; } = Guid.NewGuid();
-    public string Name { get; private set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string Name { get; set; }
     private decimal costPerWorkHour = 0M;
-    public decimal CostPerWorkHour { get { return GetTotalCost(); } private set { costPerWorkHour = value; } }
-    public bool IsGenericRole { get; private set; } = false;
+    public decimal CostPerWorkHour { get { return GetTotalCost(); } set { costPerWorkHour = value; } }
+    public bool IsGenericRole { get; set; } = false;
     public int Amount { get; set; } = 1;
     public ResourceCategory Category { get; set; }
+
+    public Resource() {
+        Name = string.Empty;
+        costPerWorkHour = 0M;
+        Amount = 0;
+    }
 
     public Resource(string name, Cost cost, bool isGeneric = false, ResourceCategory category = default)
     {
@@ -32,13 +38,6 @@ public class Resource
         Category = category;
     }
 
-    public void UpdateCoreData(string name, Cost cost, bool isGeneric)
-    {
-        Name = name;
-        CostPerWorkHour = cost.ValuePerHour;
-        IsGenericRole = isGeneric;
-    }
-
     private decimal GetTotalCost()
     {
         return costPerWorkHour * Amount;
@@ -46,7 +45,7 @@ public class Resource
 
     public override string ToString()
     {
-        return string.Format($"{(IsGenericRole ? $"{Amount}x " : String.Empty)}Resource Name at {CostPerWorkHour:C2}/h");
+        return string.Format($"{(IsGenericRole ? $"{Amount}x " : String.Empty)}{Category} at {CostPerWorkHour:C2}/h");
     }
 
 }
