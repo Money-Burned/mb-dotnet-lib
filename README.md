@@ -32,7 +32,7 @@ Your are here at the [**minimum set of requirements**](https://github.com/Money-
 
 - [Download](https://git-scm.com/downloads) and install a current version of Git
 - [Download](https://dotnet.microsoft.com/en-us/download) and Install .NET SDK (at least Version 9.0)
-- Clone this [repository](https://github.com/Money-Burned/mb-dotnet-lib)
+- Clone this [repository](https://github.com/Money-Burned/mb-dotnet-lib) and switch to the `main-min` branch
 - Compile/build your project that is referencing the library
 - Get a .NET project OR write your own .NET project that is using this library
 
@@ -43,7 +43,7 @@ winget install Git.Git -e
 winget install Microsoft.DotNet.SDK.9 -e
 md ~\Money-Burned
 cd ~\Money-Burned
-git clone https://github.com/Money-Burned/mb-dotnet-lib.git
+git clone https://github.com/Money-Burned/mb-dotnet-lib.git -b main-min
 cd ~\Money-Burned\mb-dotnet-lib\src
 dotnet build
 ls
