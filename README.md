@@ -2,9 +2,19 @@
 
 This repository is one of several reference implementations of the "Money Burned" application to illustrate the use of a specific development technology/platform. To learn more about it, check out the [organization profile](https://github.com/Money-Burned).  
 
-This is just a [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet) (pronounced "Dotnet") based software component that contains general business logic and can be used by other applications that use the same software development framework. It is a dependency for the following projects:  
+The library _mb-dotnet-lib_ is just a [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet) (pronounced "Dotnet") based software component that contains general business logic and can be used by other applications that use the same software development framework. It is a dependency for the following projects:  
 
 - [mb-dotnet-console](https://github.com/Money-Burned/mb-dotnet-console)
+- [mb-dotnet-winapp](https://github.com/Money-Burned/mb-dotnet-winapp)
+
+---
+
+The project maintains two separate branch lines (two each for the main and develop lines) to differentiate between the completeness of the features. Requirements define a [minimum](https://github.com/Money-Burned/.github/blob/main/doc/requirements.md#minimum-requirements) and an [optional set of requirements](https://github.com/Money-Burned/.github/blob/main/doc/requirements.md#optional-requirements), which this distinction is intended to take into account.  
+You can recognize it by whether the suffix `-min` is present or absent from the two main branch lines.  
+
+To make sure you are using the optional/maximum feature set, please use the branches without the `-min` suffix  both here and in the dependent projects.  
+
+Your are here at the [**minimum set of requirements**](https://github.com/Money-Burned/mb-dotnet-lib/tree/main-min). Please make sure you are using the `-min` branches in the dependent projects as well!  
 
 ## Quick facts
 
@@ -22,7 +32,7 @@ This is just a [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-do
 
 - [Download](https://git-scm.com/downloads) and install a current version of Git
 - [Download](https://dotnet.microsoft.com/en-us/download) and Install .NET SDK (at least Version 9.0)
-- Clone this [repository](https://github.com/Money-Burned/mb-dotnet-lib)
+- Clone this [repository](https://github.com/Money-Burned/mb-dotnet-lib) and switch to the `main-min` branch
 - Compile/build your project that is referencing the library
 - Get a .NET project OR write your own .NET project that is using this library
 
@@ -33,7 +43,7 @@ winget install Git.Git -e
 winget install Microsoft.DotNet.SDK.9 -e
 md ~\Money-Burned
 cd ~\Money-Burned
-git clone https://github.com/Money-Burned/mb-dotnet-lib.git
+git clone https://github.com/Money-Burned/mb-dotnet-lib.git -b main-min
 cd ~\Money-Burned\mb-dotnet-lib\src
 dotnet build
 ls
