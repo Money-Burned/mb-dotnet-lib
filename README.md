@@ -14,7 +14,7 @@ You can recognize it by whether the suffix `-min` is present or absent from the 
 
 To make sure you are using the optional/maximum feature set, please use the branches without the `-min` suffix  both here and in the dependent projects.  
 
-Your are here at the [**minimum set of requirements**](https://github.com/Money-Burned/mb-dotnet-lib/tree/main-min).  
+Your are here at the [**minimum set of requirements**](https://github.com/Money-Burned/mb-dotnet-lib/tree/main-min). Please make sure you are using the `-min` branches in the dependent projects as well!  
 
 ## Quick facts
 
